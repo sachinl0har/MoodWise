@@ -1,6 +1,44 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <h1>Movie Recommendation</h1>
+<form action="" method="get">
+  <div>
+    <label for="q">Movie Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="q"
+      name="q"
+      placeholder="Enter Movie Name"
+      value="{{ q }}"
+    />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+{% if movies is not None %}
+<div class="row">
+    {% for m in movies.results %}
+    <div class="card" style="width: 18rem">
+      <img
+        src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        {% if not m.name %}
+        <h5 class="card-title">{{ m.title }}</h5>
+        {% else %}
+        <h5 class="card-title">{{ m.name }}</h5>
+        {% endif %}
+        <p class="card-text">{{ m.overview }}</p>
+        <a href="" class="btn btn-primary">View Details</a>
+      </div>
+    </div>
+    {% endfor %}
+{% else %}
+
+  {% endif %}
+</div>
 <a href="{% url 'music' %}">Music</a>
 {% endblock content %}
