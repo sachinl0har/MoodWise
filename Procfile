@@ -1,0 +1,1 @@
+web: gunicorn MoodWise.wsgi --log-file -
