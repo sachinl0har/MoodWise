@@ -4,9 +4,9 @@
 
  <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} "> 
 
-
-<h1 class="movie-heading-recomand">Welcome to Movie Recommendation Engine</h>
 <body>
+  <div class="container">
+  <h1 class="movie-heading-recomand pb-2">Welcome to Movie Recommendation Engine</h1>
 <form action="" method="get">
   <div>
     {% comment %} <label for="q">Movie Name</label> {% endcomment %}
@@ -19,15 +19,15 @@
       value="{{ q }}"
     />
   </div>
-  <div>
-    <button type="submit" class="btn btn-primary">Search</button>
+  <div><br>
+    <button type="submit" class="btn btn-danger">Search</button>
   </div>
 </form>
-
+</div>
 {% if movies is not None %}
-<div class="row">
+<div class="row pt-2 d-flex justify-content-center">
     {% for m in movies.results %}
-    <div class="card m-2" style="width: 18rem">
+    <div class="card ms-2" style="width: 18rem">
       <img
         src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
         class="card-img-top"
@@ -40,7 +40,7 @@
         <h5 class="card-title">{{ m.name }}</h5>
         {% endif %}
         <p class="card-text">{{ m.overview }}</p>
-        <a href="" class="btn btn-primary">View Details</a>
+        <a href="" class="btn btn-danger">View Details</a>
       </div>
     </div>
     {% endfor %}
@@ -48,7 +48,6 @@
 
   {% endif %}
 </div>
-
 </body>
 {% comment %} <a href="{% url 'music' %}">Music</a> {% endcomment %}
 {% endblock content %}

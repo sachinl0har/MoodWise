@@ -18,5 +18,13 @@ body {
     color: White;
 }
 
-/* MOVIES CARDS DESIGN CUSTOM - Harshal*/
+.card-title{
+    color: black;
+  }
+  
+  .card-text{
+    font-size: 18px;
+    color: black;
+  }
+  
 
