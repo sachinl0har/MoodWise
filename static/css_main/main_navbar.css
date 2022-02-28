@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-custom {
+    background-color: #1a232e;
+}
+
+.navbar-custom .navbar-brand{
+    margin-left: 4%;
+    color: white; 
+    font-size: xx-large;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white;
+}
