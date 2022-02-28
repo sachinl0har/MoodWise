@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>Movie Recommendation</h1>
+
+ <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} "> 
+
+
+<h1 class="movie-heading-recomand">Welcome to Movie Recommendation Engine</h>
+<body>
 <form action="" method="get">
   <div>
-    <label for="q">Movie Name</label>
+    {% comment %} <label for="q">Movie Name</label> {% endcomment %}
     <input
       type="text"
       class="form-control"
@@ -18,6 +23,7 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </div>
 </form>
+
 {% if movies is not None %}
 <div class="row">
     {% for m in movies.results %}
@@ -42,5 +48,7 @@
 
   {% endif %}
 </div>
-<a href="{% url 'music' %}">Music</a>
+
+</body>
+{% comment %} <a href="{% url 'music' %}">Music</a> {% endcomment %}
 {% endblock content %}
