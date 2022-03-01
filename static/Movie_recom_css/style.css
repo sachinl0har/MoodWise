@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: #0c111b;
 }
 
 .movie-heading-recomand {
@@ -18,13 +18,17 @@ body {
     color: White;
 }
 
+.card {
+    background-color: #0c111b;
+}
+
 .card-title{
-    color: black;
-  }
+    color: white;
+}
   
-  .card-text{
+.card-text{
     font-size: 18px;
-    color: black;
-  }
+    color: #c3bfbb;
+}
   
 
