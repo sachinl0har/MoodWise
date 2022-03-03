@@ -1,64 +1,147 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
+    <body>
+        {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}
+        {% comment %} <script src="{% static 'javascripts/carousels/carousel.js' %}"></script> {% endcomment %}
+    
+    
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carouselbox"></div>
+                <a class="switchLeft sliderbutton" onclick = "sliderScrollLeft()"><-</a>
+                <a class="switchRight sliderbutton" onclick = "sliderScrollRight()">-></a>
+            </div>
+        </div>
 
- <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} "> 
- 
-<body>
-  <div class="container">
-    <div id="slider">
-      <figure>
-          <img src="../../../static/images/img1.png" alt="img1">
-          <img src="../../../static/images/img2.jpg" alt="img2">
-          <!-- <img src="images/img3.png" alt=""> -->
-          <img src="../../../static/images/img4.jpg" alt="img4">
-          <img src="../../../static/images/img5.jpg" alt="img5">
-          <img src="../../../static/images/img6.jpg" alt="img6">
-      </figure>
-  </div>
-  <h1 class="movie-heading-recomand pb-2">Welcome to Movie Recommendation Engine</h1>
-<form action="" method="get">
-  <div>
-    {% comment %} <label for="q">Movie Name</label> {% endcomment %}
-    <input
-      type="text"
-      class="form-control"
-      id="q"
-      name="q"
-      placeholder="Enter Movie Name"
-      value="{{ q }}"
-    />
-  </div>
-  <div><br>
-    <button type="submit" class="btn btn-danger">Search</button>
-  </div>
-</form>
+        {% comment %} <div class="row pt-2 d-flex justify-content-center">
+            {% for m in without_query.results %}
+                <div class="card ms-2" style="width: 18rem">
+                    <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+                         class="card-img-top"
+                         alt="..."/>
+                </div>
+            {% endfor %} {% endcomment %}
+  
+            <h1 class="movie-heading-recomand pb-2">Welcome to Movie Recommendation Engine</h1>
+            <form action="" method="get">
+                <div>
+                    {% comment %} <label for="q">Movie Name</label> {% endcomment %}
+                    <input
+                        {type="text"
+                        class="form-control"
+                        id="q"
+                        name="q"
+                        placeholder="Enter Movie Name"
+                        value="{{ q }}"
+                        />
+                    </div>
+                    <div>
+                        <br>
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </div>
+                </form>
+            </div>
+            {% if movies is not None %}
+                <div class="row pt-2 d-flex justify-content-center">
+                    {% for m in movies.results %}
+                        <div class="card ms-2" style="width: 18rem">
+                            <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+                                 class="card-img-top"
+                                 alt="..."/>
+                            <div class="card-body">
+                                {% if not m.name %}
+                                    <h5 class="card-title">{{ m.title }}</h5>
+                                {% else %}
+                                    <h5 class="card-title">{{ m.name }}</h5>
+                                {% endif %}
+                                <p class="card-text">
+                                    {{ m.overview }}
+                                </p>
+                                <a href="" class="btn btn-danger">View Details</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                {% endif %}
+            </div>
 
-</div>
-{% if movies is not None %}
-<div class="row pt-2 d-flex justify-content-center">
-    {% for m in movies.results %}
-    <div class="card ms-2" style="width: 18rem">
-      <img
-        src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        {% if not m.name %}
-        <h5 class="card-title">{{ m.title }}</h5>
-        {% else %}
-        <h5 class="card-title">{{ m.name }}</h5>
-        {% endif %}
-        <p class="card-text">{{ m.overview }}</p>
-        <a href="" class="btn btn-danger">View Details</a>
-      </div>
-    </div>
-    {% endfor %}
-{% else %}
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
+          
+            <script>
 
-  {% endif %}
-</div>
-</body>
-{% comment %} <a href="{% url 'music' %}">Music</a> {% endcomment %}
-{% endblock content %}
+              const sliders = document.querySelector(".carouselbox");
+        
+        
+              var scrollPerClick;
+              var imagepadding = 20
+        
+              showMovieData()
+
+              var scrollAmount = 0;
+
+              function sliderScrollLeft () {
+
+                sliders.scrollTo ({
+
+                  top: 0,
+                  left: (scrollAmount -= scrollPerClick),
+                  behavior: "smooth"
+
+                });
+
+                if (scrollAmount < 0 ) {
+                   scrollAmount = 0
+                }
+
+              }
+
+              function sliderScrollRight () {
+
+                if (scrollAmount <=  sliders.scrollWidth - sliders.clientWidth) {
+                  sliders.scrollTo ({
+
+                    top: 0,
+                    left: (scrollAmount += scrollPerClick),
+                    behavior: "smooth"
+  
+                  });
+                }
+
+              }
+
+
+        
+              async function showMovieData() {
+        
+              const api_key = '05480c9212035931d585cd5d29ce6030';
+        
+              var result = await axios.get(
+                  "https://api.themoviedb.org/3/movie/popular?api_key=" 
+                  + api_key +
+                  "&language=en-US&page=1"
+              );
+        
+              result = result.data.results;
+              
+              result.map(function (curr, index) {
+        
+                  sliders.insertAdjacentHTML(
+                    'beforeend',
+                    `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w200/${curr.poster_path}" />`
+                  )
+        
+              })
+        
+              scrollPerClick = document.querySelector(".img-1").clientWidth + imagepadding;
+        
+            }
+        
+            </script>
+        
+        
+
+        </body>
+        {% comment %} <a href="{% url 'music' %}">Music</a> {% endcomment %}
+    {% endblock content %}
