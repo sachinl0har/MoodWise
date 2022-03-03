@@ -1,0 +1,22 @@
+<div class="row pt-2 d-flex justify-content-center">
+    <h1 class="pb-2">Upcoming</h1>
+    {% for m in upcoming_movies %}
+        <div class="card ms-2" style="width: 18rem">
+            <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+                 class="card-img-top"
+                 alt="..."/>
+            <div class="card-body">
+                {% if not m.name %}
+                    <h5 class="card-title pb-2">{{ m.title }}</h5>
+                {% else %}
+                    <h5 class="card-title pb-2">{{ m.name }}</h5>
+                {% endif %}
+                <p class="card-text">
+                    <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png"/> {{ m.vote_average }}
+                </p>
+                <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">View Details</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
