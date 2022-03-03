@@ -1,8 +1,5 @@
-from asyncio.windows_events import NULL
-from django.http import HttpResponse
 from django.shortcuts import render
 import requests
-from django.contrib import messages 
 
 # Create your views here.
 
