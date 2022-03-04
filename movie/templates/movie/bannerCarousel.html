@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     <style>
 /* slide bar */
 
@@ -106,6 +107,12 @@
    height: 90%;
 }
     </style>
+=======
+{% load static %}
+<link rel="stylesheet" href=" {% static 'Movie_recom_css/bannerCarouselCss.css' %} ">
+<body>
+
+>>>>>>> 7b0a8ffa5a17fcce5ac28764409a972155c21523
     <div class="banner-container">
         <div class="ban-carousel">
             <!-- <div class="ban-carouselbox"> -->
@@ -115,43 +122,96 @@
                     
                 </div>
                 <div class="ban-photo-box">
-                    {% for m in np_movies %}
+                    {% comment %} {% for m in np_movies %}
                     <!-- <div class="card ms-2" style="width: 18rem">  -->
                     <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
                          class="card-img-top"
                          alt="..."/>
                 
                 <!-- <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">More Details</a> -->
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
                 </div>
-                </div>
+                {% comment %} </div> {% endcomment %}
             <!-- </div> -->
             </div>
-            <a class="ban-switchLeft sliderbutton" onclick = "ban-sliderScrollLeft()"><-</a>
-            <a class="ban-switchRight sliderbutton" onclick = "ban-sliderScrollRight()">-></a>
+            <a class="ban-switchLeft sliderbutton" onclick = "banSliderScrollLeft()"><-</a>
+            <a class="ban-switchRight sliderbutton" onclick = "banSliderScrollRight()">-></a>
               
         </div>
     </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
+
 <script>
 
 
+        const sliders = document.querySelector(".ban-photo-box")
 
-    const sliders = document.querySelector(".ban-carousel-box")
+        var scrollPerClick;
+        var imagepadding = 20
 
-var scrollPerClick;
-var imagepadding = 20
+        ban_showMovieData()
 
-ban_showMovieData()
+        var scrollAmount = 0;
+
+       function banSliderScrollLeft () {
+
+       sliders.scrollTo ({
+
+        top: 0,
+        left: (scrollAmount -= scrollPerClick),
+        behavior: "smooth"
+
+       });
+
+       if (scrollAmount < 0 ) {
+        scrollAmount = 0
+       }
+
+}
+
+function banSliderScrollRight () {
+
+  if (scrollAmount <=  sliders.scrollWidth - sliders.clientWidth) {
+    sliders.scrollTo ({
+
+      top: 0,
+      left: (scrollAmount += scrollPerClick),
+      behavior: "smooth"
+
+    });
+  }
+
+}
 
 async function ban_showMovieData() {
-    const api_key = '05480c9212035931d585cd5d29ce6030';
+    const api_key2 = '05480c9212035931d585cd5d29ce6030';
 
-    var results = await axios.get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1"
+    var result_ban = await axios.get(
+        "https://api.themoviedb.org/3/movie/popular?api_key="
+        + api_key2 +"
+        &language=en-US&page=1"
     )
 
-    console.log(results);
+    result_ban = result_ban.data.results;
+              
+    result_ban.map(function (curr, index) {
+        
+                  sliders.insertAdjacentHTML(
+                    'beforeend',
+                    `<img class="img-${index} slider-img" src="https://image.tmdb.org/t/p/w200/${curr.poster_path}" />`
+                  )
+        
+              })
+        
+              scrollPerClick = document.querySelector(".img-1").clientWidth + imagepadding;
 }
 
   </script>  
+<<<<<<< HEAD
+=======
+
+</body>
+
+
+>>>>>>> 7b0a8ffa5a17fcce5ac28764409a972155c21523
