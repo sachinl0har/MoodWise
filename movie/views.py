@@ -20,3 +20,10 @@ def MovieDetail(request, movie_id):
     recommendations = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={API_KEY}&language=en-US")
     context = {"data": data.json(), "recommendations": recommendations.json(),}
     return render(request, "movie/movie_detail.html", context)
+
+
+def bannerCarousel(request):
+    banner_carousel = requests.get('https://api.themoviedb.org/3/movie/top_rated?api_key=<<05480c9212035931d585cd5d29ce6030>>&language=en-US&page=1').json()
+    
+    context = {"banner_carousel": banner_carousel.json()}
+    return render(request,"movie/bannerCarousel.html", context)

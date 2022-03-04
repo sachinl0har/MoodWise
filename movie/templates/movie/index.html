@@ -3,9 +3,14 @@
 {% block content %}
     <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
     <body>
-        {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}
+
+
+        {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}        
+        {% include 'movie/bannerCarousel.html' %} 
         {% comment %} <script src="{% static 'javascripts/carousels/carousel.js' %}"></script> {% endcomment %}
 
+            
+      
         <div class="carousel-container">
             <div class="carousel">
                 <div class="carouselbox"></div>
@@ -64,6 +69,7 @@
                             </div>
                         </div>
                     {% endfor %}
+            
 
             {% include 'movie/now_playing_component.html' %}
 

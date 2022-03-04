@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner</title>
+
+    <style>
+/* slide bar */
+
+.banner-container {
+    background-color: lightblue;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap:  wrap;
+    height: 400px;
+    width: 100%;
+}
+
+.ban-carousel {
+    height: 400px;
+    width: 100%;
+    position: relative;
+}
+
+.ban-carousel .ban-switchLeft {
+    color: white;
+    font-weight: bold;
+    height: 100%;
+    width: 45px;
+    line-height: 370px;
+    font-size: 30px;
+    text-align: center;
+    /* background-color: aqua; */
+    font-family:  sans-serif;
+    top: 0;
+    z-index: 3; 
+    text-decoration: none;
+}
+
+.ban-carousel .ban-switchRight {
+    color: white;
+    font-weight: bold;
+    height: 100%;
+    width: 45px;
+    line-height: 250px;
+    font-size: 30px;;
+    text-align: center;
+    /* background-color: aqua; */
+    font-family:  sans-serif;
+    top: 0;
+    z-index: 3;
+    text-decoration: none;
+}
+
+.ban-carousel .ban-switchLeft {
+    position: absolute;
+    left: 0px;
+}
+
+.ban-carousel .ban-switchRight {
+    position: absolute;
+    right: 0px;
+}
+
+.ban-carouselbox {
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 10px !important;
+    display: flex;
+    align-items: center;
+}
+
+.ban-carouselbox img {
+    min-width: 147px;
+    max-width: 147px;
+    height: 200px;
+    background: cover;
+    background-color: lightgreen;
+    margin-left: 2%;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    z-index: 2;
+}
+/* 
+.ban-carouselbox img:hover {
+    transform: scale(1.4);
+    z-index: 5;
+
+} */
+.ban-rating-photo-container {
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  display: flex;
+  /* flex-wrap:  wrap; */
+  flex-direction: row;
+}
+
+.ban-rating-box{
+    width: 50%;
+    height: 90%;
+    background-color: red;
+}
+.ban-photo-box {
+   width: 50%;
+   height: 90%;
+}
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <div class="ban-carousel">
+            <!-- <div class="ban-carouselbox"> -->
+          
+            <div class="ban-rating-photo-container">
+                <div class="ban-rating-box">
+                    
+                </div>
+                <div class="ban-photo-box">
+                    {% for m in np_movies %}
+                    <!-- <div class="card ms-2" style="width: 18rem">  -->
+                    <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+                         class="card-img-top"
+                         alt="..."/>
+                
+                <!-- <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">More Details</a> -->
+                    {% endfor %}
+                </div>
+                </div>
+            <!-- </div> -->
+
+            </div>
+            <a class="ban-switchLeft sliderbutton" onclick = "ban-sliderScrollLeft()"><-</a>
+            <a class="ban-switchRight sliderbutton" onclick = "ban-sliderScrollRight()">-></a>
+              
+        </div>
+    </div>
+
+<script>
+
+
+
+    const sliders = document.querySelector(".ban-carousel-box")
+
+var scrollPerClick;
+var imagepadding = 20
+
+ban_showMovieData()
+
+async function ban_showMovieData() {
+    const api_key = '05480c9212035931d585cd5d29ce6030';
+
+    var results = await axios.get(
+        "https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&language=en-US&page=1"
+    )
+
+    console.log(results);
+}
+
+  </script>  
+</body>
+</html>
