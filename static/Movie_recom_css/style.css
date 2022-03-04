@@ -5,6 +5,31 @@
 
 body {
     background-color: #0c111b;
+    color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #0c111b;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(170, 0, 0);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 0, 0);
+  }
+
+h1 {
+    color: white;
 }
 
 /* slide bar */
