@@ -79,8 +79,8 @@ async function ban_showMovieData() {
 
     var result_ban = await axios.get(
         "https://api.themoviedb.org/3/movie/popular?api_key="
-        + api_key2 +"
-        &language=en-US&page=1"
+        + api_key2 +
+        "&language=en-US&page=1"
     )
 
     result_ban = result_ban.data.results;
