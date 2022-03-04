@@ -142,8 +142,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
 
-<script>
-
+    <script>
 
         const sliders = document.querySelector(".ban-photo-box")
 
@@ -170,9 +169,10 @@
 
 }
 
-function banSliderScrollRight () {
+    function banSliderScrollRight () {
 
-  if (scrollAmount <=  sliders.scrollWidth - sliders.clientWidth) {
+    if (scrollAmount <=  sliders.scrollWidth - sliders.clientWidth) {
+    
     sliders.scrollTo ({
 
       top: 0,
@@ -189,8 +189,8 @@ async function ban_showMovieData() {
 
     var result_ban = await axios.get(
         "https://api.themoviedb.org/3/movie/popular?api_key="
-        + api_key2 +"
-        &language=en-US&page=1"
+        + api_key2 +
+        "&language=en-US&page=1"
     )
 
     result_ban = result_ban.data.results;
