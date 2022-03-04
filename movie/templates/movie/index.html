@@ -71,6 +71,40 @@
                     {% endfor %}
             
 
+    {% comment %} Spacing Container {% endcomment %}
+
+    <div class ="spacing-container">
+
+    </div>
+            
+        {% comment %} SORT BY BUTTONS {% endcomment %}
+
+    {% comment %} <div class ="sort_by-container">
+        <a href="#" class="button1">Top Rated</a>
+        <a href="#" class="button1">Upcomming</a>
+        <a href="#" class="button1">Now Playing</a>
+        <a href="#" class="button1">Recommend</a>
+    </div> {% endcomment %}
+
+    <form action="..." method="post">
+ 
+        <div class ="sort_by-container">
+
+            <div class="button1" ><input type="submit" name="Top-Rated" value="Top Rated" /></div>
+            <div class="button1" ><input type="submit" name="Upcomming" value="Upcomming" /></div>
+            <div class="button1" ><input type="submit" name="list" value="Now Playing" /></div>
+            <div class="button1" ><input type="submit" name="list" value="Recommend" /></div>    
+
+        </div>
+
+    </form>
+
+    {% comment %} Spacing Container {% endcomment %}
+
+    <div class ="spacing-container">
+
+    </div>
+
             {% include 'movie/now_playing_component.html' %}
 
             {% include 'movie/upcoming_component.html' %}
