@@ -11,16 +11,16 @@
                     
                 </div>
                 <div class="ban-photo-box">
-                    {% for m in np_movies %}
+                    {% comment %} {% for m in np_movies %}
                     <!-- <div class="card ms-2" style="width: 18rem">  -->
                     <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
                          class="card-img-top"
                          alt="..."/>
                 
                 <!-- <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">More Details</a> -->
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
                 </div>
-                </div>
+                {% comment %} </div> {% endcomment %}
             <!-- </div> -->
 
             </div>
@@ -35,28 +35,28 @@
 <script>
 
 
-const sliders = document.querySelector(".ban-rating-photo-container")
+        const sliders = document.querySelector(".ban-photo-box")
 
-var scrollPerClick;
-var imagepadding = 20
+        var scrollPerClick;
+        var imagepadding = 20
 
-ban_showMovieData()
+        ban_showMovieData()
 
-var scrollAmount = 0;
+        var scrollAmount = 0;
 
-function banSliderScrollLeft () {
+       function banSliderScrollLeft () {
 
-  sliders.scrollTo ({
+       sliders.scrollTo ({
 
-    top: 0,
-    left: (scrollAmount -= scrollPerClick),
-    behavior: "smooth"
+        top: 0,
+        left: (scrollAmount -= scrollPerClick),
+        behavior: "smooth"
 
-  });
+       });
 
-  if (scrollAmount < 0 ) {
-     scrollAmount = 0
-  }
+       if (scrollAmount < 0 ) {
+        scrollAmount = 0
+       }
 
 }
 
