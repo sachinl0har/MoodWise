@@ -17,7 +17,6 @@ def index(request):
     if 'Top-Rated' in request.POST:
         top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results'][:2]
 
-
     context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies,}
     return render(request, 'movie/index.html', context)
 
