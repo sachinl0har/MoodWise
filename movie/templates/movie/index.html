@@ -29,51 +29,8 @@
                          alt="..."/>
                 </div>
             {% endfor %} {% endcomment %}
-            <form action="" method="get">
-                <div class="row">
-                    <div class="col-md-5 mx-auto">
-                        <div class="input-group">
-                            <input class="form-control border-end-0 border" name="q" placeholder="Search..." type="text" value="{{ q }}" id="q">
-                            <span class="input-group-append">
-                                <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
-                                    <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                </form>
-            </div>
 
-                <div class="row pt-2 d-flex justify-content-center">
-                    {% for m in movies.results %}
-                        <div class="card ms-2" style="width: 18rem">
-                            <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
-                                 class="card-img-top"
-                                 alt="..."/>
-                            <div class="card-body">
-                                {% if not m.name %}
-                                    <h5 class="card-title pb-2">{{ m.title }}</h5>
-                                {% else %}
-                                    <h5 class="card-title pb-2">{{ m.name }}</h5>
-                                {% endif %}
-                                <p class="card-text">
-                                    <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png"/> {{ m.vote_average }}
-                                </p>
-                                <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">View Details</a>
-                            </div>
-                        </div>
-                    {% endfor %}
-            
-
-    {% comment %} Spacing Container {% endcomment %}
-
-    <div class ="spacing-container">
-
-    </div>
-            
-        {% comment %} SORT BY BUTTONS {% endcomment %}
-
+    
     {% comment %} <div class ="sort_by-container">
         <a href="#" class="button1">Top Rated</a>
         <a href="#" class="button1">Upcomming</a>
@@ -81,18 +38,66 @@
         <a href="#" class="button1">Recommend</a>
     </div> {% endcomment %}
 
-    <form action="" method="get">
-        <div class ="sort_by-container justify-content-center">
-            <div class="button1" ><input type="submit" name="top-rated" value="Top Rated" /></div>
-            <div class="button1" ><input type="submit" name="upcoming" value="Upcomming" /></div>
-            <div class="button1" ><input type="submit" name="now_playing" value="Now Playing" /></div>
-            <div class="button1" ><input type="submit" name="list" value="Recommend" /></div>    
+
+        <form action="" method="get">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div class="input-group">
+                        <input class="form-control border-end-0 border" name="q" placeholder="Search..." type="text" value="{{ q }}" id="q">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
+                                <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            </form>
         </div>
-    </form>
 
-    {% comment %} Spacing Container {% endcomment %}
+        {% comment %} Spacing Container {% endcomment %}
 
-    <div class ="spacing-container">
+        <div class ="spacing-container">
+
+        </div>
+
+        {% comment %} SORT BY BUTTONS {% endcomment %}
+
+        <form action="" method="get">
+            <div class ="sort_by-container justify-content-center">
+                <div class="button1" ><input type="submit" name="top-rated" value="Top Rated" /></div>
+                <div class="button1" ><input type="submit" name="upcoming" value="Upcomming" /></div>
+                <div class="button1" ><input type="submit" name="now_playing" value="Now Playing" /></div>
+                <div class="button1" ><input type="submit" name="list" value="Recommend" /></div>    
+            </div>
+        </form>
+
+        {% comment %} Spacing Container {% endcomment %}
+
+        <div class ="spacing-container">
+
+        </div>
+
+            <div class="row pt-2 d-flex justify-content-center">
+                {% for m in movies.results %}
+                    <div class="card ms-2" style="width: 18rem">
+                        <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
+                             class="card-img-top"
+                             alt="..."/>
+                        <div class="card-body">
+                            {% if not m.name %}
+                                <h5 class="card-title pb-2">{{ m.title }}</h5>
+                            {% else %}
+                                <h5 class="card-title pb-2">{{ m.name }}</h5>
+                            {% endif %}
+                            <p class="card-text">
+                                <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png"/> {{ m.vote_average }}
+                            </p>
+                            <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
 
 
     </div>
