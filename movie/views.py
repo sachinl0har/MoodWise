@@ -48,3 +48,8 @@ def upcoming_movies(request):
     upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results']
     context = {'upcoming_movies': upcoming_movies,}
     return render(request, "movie/upcoming_movies.html", context)
+
+def now_playing_movies(request):
+    now_playing_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    context = {'now_playing_movies': now_playing_movies,}
+    return render(request, "movie/now_playing_movies.html", context)
