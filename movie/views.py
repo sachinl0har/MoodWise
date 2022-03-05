@@ -33,3 +33,8 @@ def MovieDetail(request, movie_id):
     recommendations = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={API_KEY}&language=en-US")
     context = {"data": data.json(), "recommendations": recommendations.json(),}
     return render(request, "movie/movie_detail.html", context)
+
+def popular_movies(request):
+    popular_movies = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    context = {'popular_movies': popular_movies,}
+    return render(request, "movie/popular_movies.html", context)
