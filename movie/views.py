@@ -14,8 +14,16 @@ def index(request):
 
     # Sort By selected buttons (top Rated, upcomming, now playing)
 
-    if 'Top-Rated' in request.POST:
-        top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results'][:2]
+    if request.GET.get('top-rated'):
+        top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    elif request.GET.get('upcoming'):
+        upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    elif request.GET.get('now_playing'):
+        np_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    else:
+        np_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
+        top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
+        upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
 
     context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies,}
     return render(request, 'movie/index.html', context)
@@ -25,11 +33,3 @@ def MovieDetail(request, movie_id):
     recommendations = requests.get(f"https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key={API_KEY}&language=en-US")
     context = {"data": data.json(), "recommendations": recommendations.json(),}
     return render(request, "movie/movie_detail.html", context)
-
-
-# def bannerCarousel(request):
-#     bannerCarousel_popuplar = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=en-US&page=1').json() 
-
-    
-#     context = {'bannerCarousel_popuplar': bannerCarousel_popuplar}
-#     return render(request, 'movie/bannerCarousel.html', context)

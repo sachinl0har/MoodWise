@@ -2,15 +2,10 @@
 {% load static %}
 {% block content %}
     <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
-    <body>
-
 
         {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}        
         {% comment %} {% include 'movie/bannerCarousel.html' %}  {% endcomment %}
         {% comment %} <script src="{% static 'javascripts/carousels/carousel.js' %}"></script> {% endcomment %}
-<<<<<<< HEAD
-=======
-
         <div class="carousel-container">
             <div class="carousel">
                 <div class="carouselbox"></div>
@@ -25,9 +20,7 @@
             </div>
         </div>
       
-        
-
->>>>>>> cb0d95b86e75c2cdf977b9f41b6a193352e32d98
+    
         {% comment %} <div class="row pt-2 d-flex justify-content-center">
             {% for m in without_query.results %}
                 <div class="card ms-2" style="width: 18rem">
@@ -88,15 +81,13 @@
         <a href="#" class="button1">Recommend</a>
     </div> {% endcomment %}
 
-    <form action="..." method="post">
-        <div class ="sort_by-container">
-            <div class="button1" ><input type="submit" name="Top-Rated" value="Top Rated" /></div>
-            <div class="button1" ><input type="submit" name="Upcomming" value="Upcomming" /></div>
-            <div class="button1" ><input type="submit" name="list" value="Now Playing" /></div>
+    <form action="" method="get">
+        <div class ="sort_by-container justify-content-center">
+            <div class="button1" ><input type="submit" name="top-rated" value="Top Rated" /></div>
+            <div class="button1" ><input type="submit" name="upcoming" value="Upcomming" /></div>
+            <div class="button1" ><input type="submit" name="now_playing" value="Now Playing" /></div>
             <div class="button1" ><input type="submit" name="list" value="Recommend" /></div>    
-
         </div>
-
     </form>
 
     {% comment %} Spacing Container {% endcomment %}
@@ -108,9 +99,9 @@
 
             {% include 'movie/now_playing_component.html' %}
 
-            {% include 'movie/upcoming_component.html' %}
-
             {% include 'movie/top_rated_component.html' %}
+
+            {% include 'movie/upcoming_component.html' %}
 
           <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
           
@@ -182,9 +173,5 @@
             }
         
             </script>
-        
-        
-
-        </body>
         {% comment %} <a href="{% url 'music' %}">Music</a> {% endcomment %}
     {% endblock content %}
