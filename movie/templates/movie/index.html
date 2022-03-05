@@ -8,11 +8,6 @@
         {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}        
         {% include 'movie/bannerCarousel.html' %} 
         {% comment %} <script src="{% static 'javascripts/carousels/carousel.js' %}"></script> {% endcomment %}
-
-            
-      
-        
-
         {% comment %} <div class="row pt-2 d-flex justify-content-center">
             {% for m in without_query.results %}
                 <div class="card ms-2" style="width: 18rem">
@@ -21,7 +16,6 @@
                          alt="..."/>
                 </div>
             {% endfor %} {% endcomment %}
-
             <form action="" method="get">
                 <div class="row">
                     <div class="col-md-5 mx-auto">
@@ -75,9 +69,7 @@
     </div> {% endcomment %}
 
     <form action="..." method="post">
- 
         <div class ="sort_by-container">
-
             <div class="button1" ><input type="submit" name="Top-Rated" value="Top Rated" /></div>
             <div class="button1" ><input type="submit" name="Upcomming" value="Upcomming" /></div>
             <div class="button1" ><input type="submit" name="list" value="Now Playing" /></div>
@@ -118,9 +110,7 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js"></script>
           
             <script>
-
               const sliders = document.querySelector(".carouselbox");
-        
         
               var scrollPerClick;
               var imagepadding = 20
