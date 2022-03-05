@@ -38,3 +38,13 @@ def popular_movies(request):
     popular_movies = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=en-US&page=1').json()['results']
     context = {'popular_movies': popular_movies,}
     return render(request, "movie/popular_movies.html", context)
+
+def top_rated_movies(request):
+    top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    context = {'top_rated_movies': top_rated_movies,}
+    return render(request, "movie/top_rated_movies.html", context)
+
+def upcoming_movies(request):
+    upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    context = {'upcoming_movies': upcoming_movies,}
+    return render(request, "movie/upcoming_movies.html", context)
