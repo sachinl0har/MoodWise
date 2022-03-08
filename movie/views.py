@@ -69,6 +69,6 @@ def now_playing_movies(request):
 def trending_movies(request):
     query = request.GET.get('q') if request.GET.get('q') != None else ''
     movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
-    trending_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
-    context = {'now_playing_movies': trending_movies, 'movies': movies,}
-    return render(request, "movie/now_playing_movies.html", context)
+    trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results']
+    context = {'trending_movies': trending_movies, 'movies': movies,}
+    return render(request, "movie/trending_movies.html", context)
