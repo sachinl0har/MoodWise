@@ -11,6 +11,7 @@ def index(request):
     np_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
     top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
     upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
+    trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results'][:5]
 
     # Sort By selected buttons (top Rated, upcomming, now playing)
 
@@ -20,12 +21,15 @@ def index(request):
         upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results']
     elif request.GET.get('now_playing'):
         np_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    elif request.GET.get('trending'):
+        trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results']
     else:
         np_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
         top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
         upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
+        trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results'][:5]
 
-    context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies,}
+    context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies, 'trending_movies': trending_movies,}
     return render(request, 'movie/index.html', context)
 
 def MovieDetail(request, movie_id):
