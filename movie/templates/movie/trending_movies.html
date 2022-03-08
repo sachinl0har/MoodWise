@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
+
 <div class="carousel-container">
     <div class="carousel">
         <div class="carouselbox"></div>
@@ -79,8 +80,8 @@
 
 
 <div class="row pt-2 d-flex justify-content-center">
-    <h1 class="pb-2">Popular Movies</h1>
-    {% for m in popular_movies %}
+    <h1 class="pb-2">Trending Movies</h1>
+    {% for m in trending_movies %}
         <div class="card ms-2" style="width: 18rem">
             <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
                  class="card-img-top"

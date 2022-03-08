@@ -39,21 +39,36 @@ def MovieDetail(request, movie_id):
     return render(request, "movie/movie_detail.html", context)
 
 def popular_movies(request):
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
     popular_movies = requests.get(f'https://api.themoviedb.org/3/movie/popular?api_key={API_KEY}&language=en-US&page=1').json()['results']
-    context = {'popular_movies': popular_movies,}
+    context = {'popular_movies': popular_movies, 'movies': movies,}
     return render(request, "movie/popular_movies.html", context)
 
 def top_rated_movies(request):
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
     top_rated_movies = requests.get(f'https://api.themoviedb.org/3/movie/top_rated?api_key={API_KEY}&language=en-US&page=1').json()['results']
-    context = {'top_rated_movies': top_rated_movies,}
+    context = {'top_rated_movies': top_rated_movies, 'movies': movies,}
     return render(request, "movie/top_rated_movies.html", context)
 
 def upcoming_movies(request):
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
     upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results']
-    context = {'upcoming_movies': upcoming_movies,}
+    context = {'upcoming_movies': upcoming_movies, 'movies': movies,}
     return render(request, "movie/upcoming_movies.html", context)
 
 def now_playing_movies(request):
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
     now_playing_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
-    context = {'now_playing_movies': now_playing_movies,}
+    context = {'now_playing_movies': now_playing_movies, 'movies': movies,}
+    return render(request, "movie/now_playing_movies.html", context)
+
+def trending_movies(request):
+    query = request.GET.get('q') if request.GET.get('q') != None else ''
+    movies = requests.get(f'https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&language=en-US&page=1&include_adult=false&query={query}').json()
+    trending_movies = requests.get(f'https://api.themoviedb.org/3/movie/now_playing?api_key={API_KEY}&language=en-US&page=1').json()['results']
+    context = {'now_playing_movies': trending_movies, 'movies': movies,}
     return render(request, "movie/now_playing_movies.html", context)

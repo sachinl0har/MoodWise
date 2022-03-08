@@ -65,11 +65,11 @@
 
         <form action="" method="get">
             <div class ="sort_by-container justify-content-center">
-                <div class="button1" ><input type="submit" name="trending" value="Trending" /></div>
-                <div class="button1" ><input type="submit" name="top-rated" value="Top Rated" /></div>
-                <div class="button1" ><input type="submit" name="upcoming" value="Upcomming" /></div>
-                <div class="button1" ><input type="submit" name="now_playing" value="Now Playing" /></div>
-                <div class="button1" ><input type="submit" name="list" value="Recommend" /></div>    
+                <a href="{% url 'trending_movies' %}" class="button1" >Trending</a>
+                <a href="{% url 'top_rated_movies' %}" class="button1" >Top Rated</a>
+                <a href="{% url 'upcoming_movies' %}" class="button1" >Upcoming</a>
+                <a href="{% url 'now_playing_movies' %}" class="button1" >Now Playing</a>
+                <a href="" class="button1" >Recommend</a>    
             </div>
         </form>
 
@@ -102,6 +102,7 @@
 
 
     </div>
+
             {% include 'movie/trending_component.html' %}
 
             {% include 'movie/now_playing_component.html' %}
