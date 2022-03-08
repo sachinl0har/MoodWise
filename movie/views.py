@@ -1,6 +1,11 @@
 from django.shortcuts import render
 import requests
 
+
+# Machine Learning Library
+
+import csv
+
 # Create your views here.
 
 API_KEY = '05480c9212035931d585cd5d29ce6030'
@@ -56,3 +61,31 @@ def trending_movies(request):
     trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results']
     context = {'trending_movies': trending_movies, 'movies': movies,}
     return render(request, "movie/trending_movies.html", context)
+
+
+
+#----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
+
+def isMoviePresent(movie_name):
+    file = open('../MoodWise/Machine Learning/model/main_data.csv', 'r')
+    reader = csv.reader(file)
+    for row in reader:
+        if row[18] == movie_name:
+            return True
+    return False
+
+# fetch movie id from dataset and return a list
+# movie_detail = [movie id, movie name]
+
+# def getMovieDetail(movie_name):
+#     try:
+#         file = open('MoodWise\Machine Learning\model\main_data.csv', 'r')
+#         reader = csv.reader(file)
+#         movie_detail = []
+#         for row in reader:
+#             if row[18] == movie_name:
+#                 movie_detail.append(row[4])
+#                 movie_detail.append(movie_name)
+#                 return movie_detail
+#     except:
+#         return movie_name
