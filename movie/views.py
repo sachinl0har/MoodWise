@@ -67,7 +67,7 @@ def trending_movies(request):
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
 
 def isMoviePresent(movie_name):
-    file = open('../MoodWise/Machine Learning/model/main_data.csv', 'r')
+    file = open('../machine-learning/model/main_data.csv', 'r')
     reader = csv.reader(file)
     for row in reader:
         if row[18] == movie_name:
@@ -79,7 +79,7 @@ def isMoviePresent(movie_name):
 
 # def getMovieDetail(movie_name):
 #     try:
-#         file = open('MoodWise\Machine Learning\model\main_data.csv', 'r')
+#         file = open('../machine-learning/model/main_data.csv', 'r')
 #         reader = csv.reader(file)
 #         movie_detail = []
 #         for row in reader:
