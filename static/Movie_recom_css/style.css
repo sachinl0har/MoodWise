@@ -205,3 +205,15 @@ input[type="submit"], input[type="reset"] {
 	outline: inherit;
 }
 
+.movie_container-ml {
+    min-width: 147px;
+    max-width: 147px;
+    height: 200px;
+    background: cover;
+    background-color: grey;
+    margin-left: 2%;
+    margin: 5px 10px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    z-index: 2;
+}
