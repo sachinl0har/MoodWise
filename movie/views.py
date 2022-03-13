@@ -210,7 +210,7 @@ def SearchMovie(request):
         except:
             return movie_name_geners
 
-    def getMoviePoster(movie_id):
+    def getMoviePosterGeners(movie_id):
         try:
             response = requests.get(
             'https://api.themoviedb.org/3/movie/' + movie_id + '?api_key=' + API_KEY + '&language=en-US')
@@ -232,7 +232,7 @@ def SearchMovie(request):
     for element in sorted_similar_movies_by_generes:
         movie_name_geners = get_title_from_index(element[0])
         movie_detail_geners = getMovieDetailGenres(movie_name_geners)
-        poster_geners = getMoviePoster(movie_detail_geners[0])
+        poster_geners = getMoviePosterGeners(movie_detail_geners[0])
         movie_list.append([movie_name_geners, poster_geners])
         i = i + 1
         if i >= 100:
