@@ -81,10 +81,12 @@
 
         {% comment %} Machine Learing Searching container {% endcomment %}
 
-        <form action="{% url 'mac_learn_testing' %}" method="post">
+        <form action="" method="post">
             {% csrf_token %}
-            <input type="text" name="search_box" placeholder="Search">
-            <input type="submit" name="search_btn" value="SEARCH">
+            <input type="text" name="search_box" value="{{ search_box }}" id="search_box" placeholder="Search">
+            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
+            </button>
         </form>
 
         {% comment %} {% for item in data %}

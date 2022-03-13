@@ -70,7 +70,7 @@ def trending_movies(request):
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
 
 def isMoviePresent(movie_name):
-    file = open('../machine-learning/model/main_data.csv', 'r')
+    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r')
     reader = csv.reader(file)
     for row in reader:
         if row[18] == movie_name:
@@ -81,7 +81,7 @@ def isMoviePresent(movie_name):
 # movie_detail = [movie id, movie name]
 def getMovieDetail(movie_name):
     try:
-        file = open('../machine-learning/model/main_data.csv', 'r')
+        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r')
         reader = csv.reader(file)
         movie_detail = []
         for row in reader:
@@ -112,10 +112,10 @@ def SearchMovie(request):
     
     # if movie is not in dataset return a message
     if not isMoviePresent(searched):
-        return render(request, 'index.html', {'message': 'Movie not found!'})
+        return render(request, 'movie/index.html', {'message': 'Movie not found!'})
 
     # Reading data - set
-    f = open('../machine-learning/model/main_data.csv')
+    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv')
     df = pd.read_csv(f)
 
     # extracting useful features
@@ -162,4 +162,4 @@ def SearchMovie(request):
         if i >= 4:
             break
 
-    return render(request, 'mac_learn_testing.html', {'data': movie_list})
+    return render(request, 'movie/mac_learn_testing.html', {'data': movie_list})
