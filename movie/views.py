@@ -70,7 +70,8 @@ def trending_movies(request):
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
 
 def isMoviePresent(movie_name):
-    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r')
+    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
     reader = csv.reader(file)
     for row in reader:
         if row[18] == movie_name:
@@ -81,7 +82,8 @@ def isMoviePresent(movie_name):
 # movie_detail = [movie id, movie name]
 def getMovieDetail(movie_name):
     try:
-        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r')
+        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
         reader = csv.reader(file)
         movie_detail = []
         for row in reader:
@@ -115,19 +117,22 @@ def SearchMovie(request):
         return render(request, 'movie/index.html', {'message': 'Movie not found!'})
 
     # Reading data - set
-    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv')
+    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', encoding='utf-8')
     df = pd.read_csv(f)
 
     # extracting useful features
-    features = ['comb']
+    features = ['keywords', 'cast', 'genres', 'director']
+    # features = ['comb']
 
     # combining the features as a single string
     def combine_features(row):
-        return row['comb']
+        return row['keywords'] + " " + row['cast'] + " " + row["genres"] + " " + row["director"]
+        # return row['comb']
 
     # filling null entries with empty string i.e. ''
-    # for feature in features:
-    #     df[feature] = df[feature].fillna('')
+    for feature in features:
+        df[feature] = df[feature].fillna('')
 
     # applying combined_features() method over each rows of dataframe and storing the combined string in
     # “combined_features” column
