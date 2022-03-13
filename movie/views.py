@@ -187,7 +187,39 @@ def SearchMovie(request):
         if i >= 10:
             break
 
-     # trying to add geners -- harshal
+# ------- trying to add geners in the same movie list array -- harshal --------------------------------
+
+    def getMovieDetailGenres(movie_name_geners):
+        try:
+
+        # sachin File Location
+        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        
+        # Harshal File Location
+            file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+       
+        
+        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
+            reader = csv.reader(file)
+            movie_detail_geners = []
+            for row in reader:
+                if row[3] == movie_name_geners:
+                 movie_detail_geners.append(row[4])
+                 movie_detail_geners.append(movie_name_geners)
+                 return movie_detail_geners
+        except:
+            return movie_name_geners
+
+    def getMoviePoster(movie_id):
+        try:
+            response = requests.get(
+            'https://api.themoviedb.org/3/movie/' + movie_id + '?api_key=' + API_KEY + '&language=en-US')
+            data = response.json()
+            return 'https://image.tmdb.org/t/p/original/' + data['poster_path']
+        except:
+            return blank_poster_url
+
+
 
     def get_geners_from_genres(genres):
         return df[df.genres == genres]["genres"].values[0]
@@ -199,7 +231,7 @@ def SearchMovie(request):
 
     for element in sorted_similar_movies_by_generes:
         movie_name_geners = get_title_from_index(element[0])
-        movie_detail_geners = getMovieDetail(movie_name_geners)
+        movie_detail_geners = getMovieDetailGenres(movie_name_geners)
         poster_geners = getMoviePoster(movie_detail_geners[0])
         movie_list.append([movie_name_geners, poster_geners])
         i = i + 1
