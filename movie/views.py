@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -161,4 +162,4 @@ def SearchMovie(request):
         if i >= 4:
             break
 
-    return render(request, 'index.html', {'data': movie_list})
+    return render(request, 'mac_learn_testing.html', {'data': movie_list})
