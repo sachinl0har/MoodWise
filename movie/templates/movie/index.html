@@ -81,18 +81,18 @@
 
         {% comment %} Machine Learing Searching container {% endcomment %}
 
-        <form action="/SearchMovie/" method="post">
+        <form action="{% url 'mac_learn_testing' %}" method="post">
             {% csrf_token %}
             <input type="text" name="search_box" placeholder="Search">
             <input type="submit" name="search_btn" value="SEARCH">
         </form>
 
-        {% for item in data %}
+        {% comment %} {% for item in data %}
         <div class="movie_container-ml">
             <img alt="poster" src={{ item.1 }}>
             <h3>{{ item.0 }}</h3>
         </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
         {% comment %} ...............................................{% endcomment %}
 

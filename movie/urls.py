@@ -8,7 +8,6 @@ urlpatterns = [
     path('upcoming_movies/', views.upcoming_movies, name='upcoming_movies'),
     path('now_playing_movies/', views.now_playing_movies, name='now_playing_movies'),
     path('trending_movies/', views.trending_movies, name='trending_movies'),
-    path("movie/<int:movie_id>/", views.MovieDetail, name="moviedetail"),
-    
-    url(r'^SearchMovie', views.SearchMovie)
+    path("movie/<int:movie_id>/", views.MovieDetail, name="moviedetail"),   
+    path("mac_learn_testing/", views.SearchMovie, name="mac_learn_testing")
 ]

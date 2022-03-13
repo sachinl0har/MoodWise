@@ -161,4 +161,4 @@ def SearchMovie(request):
         if i >= 4:
             break
 
-    return render(request, 'index.html', {'data': movie_list})
+    return render(request, 'mac_learn_testing.html', {'data': movie_list})
