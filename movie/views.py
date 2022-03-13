@@ -222,7 +222,7 @@ def SearchMovie(request):
 
 
     def get_geners_from_genres(genres):
-        return df[df.genres == genres]["genres"].values[0]
+        return df[df.genres == genres]["genres"]
     
     movie_geners = get_geners_from_genres(searched)
     similar_movies_by_generes = list(enumerate(cosine_sim[movie_geners]))
