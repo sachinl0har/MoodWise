@@ -2,7 +2,10 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
-    <div class="row pt-4 d-flex justify-content-center">
+
+<div class="pt-5">
+    <h2 class="p-4">Recommendations</h2>
+    <div class="row pt-2 d-flex justify-content-center">
         {% for item in data %}
             <div class="card ms-2" style="width: 18rem">
                 <img src="{{ item.1 }}"
@@ -13,9 +16,7 @@
                 </div>
             </div>
         {% endfor %}
-
-
-
+</div>
 </div>
 
 {% endblock %}
