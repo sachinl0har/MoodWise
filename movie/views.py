@@ -131,7 +131,7 @@ def getMoviePoster(movie_id):
 # searches the movie and return top 4 similar movies
 def SearchMovie(request):
     searched = request.POST.get('search_box')
-    
+    print(searched)
     # if movie is not in dataset return a message
     if not isMoviePresent(searched):
         return render(request, 'movie/index.html', {'message': 'Movie not found!'})
@@ -146,12 +146,12 @@ def SearchMovie(request):
     df = pd.read_csv(f)
 
     # extracting useful features
-    features = ['keywords', 'cast', 'genres', 'director']
+    features = ['keywords', 'cast', 'genres', 'director', 'original_title', 'overview', 'title']
     # features = ['comb']
 
     # combining the features as a single string
     def combine_features(row):
-        return row['keywords'] + " " + row['cast'] + " " + row["genres"] + " " + row["director"]
+        return row['keywords'] + " " + row['cast'] + " " + row["genres"] + " " + row["director"] + " " + row["original_title"] + " " + row["overview"] + " " + row["title"]
         # return row['comb']
 
     # filling null entries with empty string i.e. ''
@@ -172,7 +172,7 @@ def SearchMovie(request):
 
     # helper functions to get movie title from movie index and vice-versa.
     def get_title_from_index(index):
-        return df[df.index == index]["title"].values[0]
+        return df[df.index == index]["original_title"].values[0]
 
     def get_index_from_title(title):
         return df[df.title == title]["index"].values[0]
@@ -244,6 +244,7 @@ def SearchMovie(request):
         if i >= 100:
             break
         
+    print(movie_list[1])
 
 
     return render(request, 'movie/mac_learn_testing.html', {'data': movie_list})
