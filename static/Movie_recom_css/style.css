@@ -1,219 +1,334 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    overflow-x: hidden;
-    background-color: #0c111b;
-    color: white;
+  overflow-x: hidden;
+  background-color: #0c111b;
+  color: white;
 }
 
 /* width */
 ::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #0c111b;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(170, 0, 0);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(255, 0, 0);
-  }
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0c111b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 0, 0);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 0, 0);
+}
 
 h1 {
-    color: white;
+  color: white;
 }
 
 /* slide bar */
 
 .carousel-container {
-    padding-top: 60px;
-    /* background-color: #0c111b; */
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-wrap:  wrap;
+  padding-top: 60px;
+  /* background-color: #0c111b; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .carousel {
-    height: 250px;
-    width: 100%;
-    position: relative;
+  height: 250px;
+  width: 100%;
+  position: relative;
 }
 
 .carousel .switchLeft {
-    color: white;
-    font-weight: bold;
-    height: 100%;
-    width: 45px;
-    line-height: 250px;
-    font-size: 30px;
-    text-align: center;
-    /* background-color: aqua; */
-    font-family:  sans-serif;
-    top: 0;
-    z-index: 3; 
-    text-decoration: none;
+  color: white;
+  font-weight: bold;
+  height: 100%;
+  width: 45px;
+  line-height: 250px;
+  font-size: 30px;
+  text-align: center;
+  /* background-color: aqua; */
+  font-family: sans-serif;
+  top: 0;
+  z-index: 3;
+  text-decoration: none;
 }
 
 .carousel .switchRight {
-    color: white;
-    font-weight: bold;
-    height: 100%;
-    width: 45px;
-    line-height: 250px;
-    font-size: 30px;;
-    text-align: center;
-    /* background-color: aqua; */
-    font-family:  sans-serif;
-    top: 0;
-    z-index: 3;
-    text-decoration: none;
+  color: white;
+  font-weight: bold;
+  height: 100%;
+  width: 45px;
+  line-height: 250px;
+  font-size: 30px;
+  text-align: center;
+  /* background-color: aqua; */
+  font-family: sans-serif;
+  top: 0;
+  z-index: 3;
+  text-decoration: none;
 }
 
 .carousel .switchLeft {
-    position: absolute;
-    left: 0px;
+  position: absolute;
+  left: 0px;
 }
 
 .carousel .switchRight {
-    position: absolute;
-    right: 0px;
+  position: absolute;
+  right: 0px;
 }
 
 .carouselbox {
-    height: 250px;
-    width: auto;
-    overflow: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    text-align: center;
-    padding-bottom: 10px !important;
-    display: flex;
-    align-items: center;
+  height: 250px;
+  width: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px !important;
+  display: flex;
+  align-items: center;
 }
 
 .carouselbox img {
-    min-width: 147px;
-    max-width: 147px;
-    height: 200px;
-    background: cover;
-    background-color: grey;
-    margin-left: 2%;
-    margin: 5px 10px;
-    cursor: pointer;
-    transition: 0.5s ease;
-    z-index: 2;
+  min-width: 147px;
+  max-width: 147px;
+  height: 200px;
+  background: cover;
+  background-color: grey;
+  margin-left: 2%;
+  margin: 5px 10px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  z-index: 2;
 }
 
 .carouselbox img:hover {
-    transform: scale(1.4);
-    z-index: 5;
-
+  transform: scale(1.4);
+  z-index: 5;
 }
 
-
-
-
 .movie-heading-recomand {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: lighter;
-    color: White;
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: lighter;
+  color: White;
 }
 
 .card {
-    background-color: #0c111b;
+  background-color: #0c111b;
 }
 
-.card-title{
-    color: white;
+.card-title {
+  color: white;
 }
-  
-.card-text{
-    font-size: 18px;
-    color: #c3bfbb;
+
+.card-text {
+  font-size: 18px;
+  color: #c3bfbb;
 }
 
 /* Spacing Container */
 
 .spacing-container {
-    width: 100%;
-    height: 30px;
-
+  width: 100%;
+  height: 30px;
 }
-
 
 /* Sort By Buttons */
 
 .sort_by-container {
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
-    flex-wrap:  wrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-
-a.button1{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:20px;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
-    transition: all 0.2s;
+a.button1 {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 20px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
 }
 
-a.button1:hover{
-    color:#000000;
-    background-color:#FFFFFF;
-    }
-    @media all and (max-width:30em){
-    a.button1{
-     display:block;
-     margin:0.4em auto;
-    }
-
+a.button1:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+@media all and (max-width: 30em) {
+  a.button1 {
+    display: block;
+    margin: 0.4em auto;
+  }
 }
 /* Removing The stlye of input form button */
 
-input[type="submit"], input[type="reset"] {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 .movie_container-ml {
-    min-width: 147px;
-    max-width: 147px;
-    height: 200px;
-    background: cover;
-    background-color: grey;
-    margin-left: 2%;
-    margin: 5px 10px;
-    cursor: pointer;
-    transition: 0.5s ease;
-    z-index: 2;
+  min-width: 147px;
+  max-width: 147px;
+  height: 200px;
+  background: cover;
+  background-color: grey;
+  margin-left: 2%;
+  margin: 5px 10px;
+  cursor: pointer;
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+/* AUTO COMPLETE CSS */
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+#autoComplete {
+  background-position: 98%;
+}
+
+@media only screen and (max-width: 650px) {
+  #autoComplete {
+    background-position: 97%;
+  }
+}
+
+
+#autoComplete {
+  position: relative;
+  height: 2.6rem;
+}
+
+.autoComplete_result {
+  margin: 0.15rem auto;
+  padding: 0.6rem;
+  max-width: 280px;
+  border: 0.05rem solid #e3e3e3;
+  list-style: none;
+  text-align: left;
+  font-size: 1.1rem;
+  color: #7b7b7b;
+  transition: all 0.1s ease-in-out;
+  background-color: #fff;
+}
+.autoComplete_result::selection {
+  color: rgba(#fff, 0);
+  background-color: rgba(#fff, 0);
+}
+
+.autoComplete_result:hover {
+  cursor: pointer;
+  background-color: rgba(255, 248, 248, 0.9);
+  border-left: 2px solid rgb(255, 0, 0);
+  border-right: 2px solid rgb(255, 0, 0);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+.autoComplete_result:focus {
+  outline: 0;
+  background-color: rgba(255, 248, 248, 0.9);
+  border-left: 2px solid rgb(255, 0, 0);
+  border-right: 2px solid rgb(255, 0, 0);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+.autoComplete_highlighted {
+  opacity: 1;
+  color: rgb(255, 0, 0);
+  font-weight: 700;
+}
+.autoComplete_highlighted::selection {
+  color: rgba(#fff, 0);
+  background-color: rgba(#fff, 0);
+}
+.autoComplete_selected {
+  cursor: pointer;
+  background-color: rgba(255, 248, 248, 0.9);
+  border-left: 2px solid rgb(255, 0, 0);
+  border-right: 2px solid rgb(255, 0, 0);
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+@media only screen and (max-width: 600px) {
+  #autoComplete {
+    width: 5rem;
+  }
+  #autoComplete:focus {
+    width: 11rem;
+    background-size: 1.6rem;
+    background-position: left 1.1rem top 0.75rem;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  #autoComplete {
+    border-width: 1px;
+  }
+  #autoComplete:hover {
+    border-width: 1px;
+  }
+  #autoComplete:focus {
+    border-width: 1px;
+  }
+}
+@-moz-document url-prefix() {
+  #autoComplete {
+    border-width: 1px;
+    background-size: 1.2rem;
+    background-origin: border-box;
+    background-position: center;
+  }
+  #autoComplete:hover {
+    border-width: 1px;
+  }
+  #autoComplete:focus {
+    border-width: 1px;
+    background-position: left 1.1rem top 0.8rem;
+  }
 }

@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 import requests
 import pandas as pd
@@ -21,7 +22,8 @@ def index(request):
     upcoming_movies = requests.get(f'https://api.themoviedb.org/3/movie/upcoming?api_key={API_KEY}&language=en-US&page=1').json()['results'][:5]
     trending_movies = requests.get(f'https://api.themoviedb.org/3/trending/movie/day?api_key={API_KEY}').json()['results'][:5]
 
-    context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies, 'trending_movies': trending_movies,}
+    suggestions = get_suggestions()
+    context = {'movies': movies, 'np_movies': np_movies, 'top_rated_movies': top_rated_movies, 'upcoming_movies': upcoming_movies, 'trending_movies': trending_movies, 'suggestions': suggestions,}
     return render(request, 'movie/index.html', context)
 
 def MovieDetail(request, movie_id):
@@ -68,6 +70,11 @@ def trending_movies(request):
 
 
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
+def get_suggestions():
+    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    data = pd.read_csv(file)
+    return list(data['original_title'].str.capitalize())
+
 
 def isMoviePresent(movie_name):
     file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
@@ -164,7 +171,7 @@ def SearchMovie(request):
         poster = getMoviePoster(movie_detail[0])
         movie_list.append([movie_name, poster])
         i = i + 1
-        if i >= 4:
+        if i >= 10:
             break
 
     return render(request, 'movie/mac_learn_testing.html', {'data': movie_list})

@@ -9,5 +9,5 @@ urlpatterns = [
     path('now_playing_movies/', views.now_playing_movies, name='now_playing_movies'),
     path('trending_movies/', views.trending_movies, name='trending_movies'),
     path("movie/<int:movie_id>/", views.MovieDetail, name="moviedetail"),   
-    path("mac_learn_testing/", views.SearchMovie, name="mac_learn_testing")
+    path("recommendations/", views.SearchMovie, name="recommendations"),
 ]

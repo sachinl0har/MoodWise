@@ -3,6 +3,10 @@
 {% block content %}
     <link rel="stylesheet" href=" {% static 'Movie_recom_css/style.css' %} ">
 
+    <script type="text/javascript">
+        var films = {{ suggestions|safe }};
+      </script>
+
         {% comment %} {% include 'common templates/messages.html' %}  {% endcomment %}        
         {% comment %} {% include 'movie/bannerCarousel.html' %}  {% endcomment %}
         {% comment %} <script src="{% static 'javascripts/carousels/carousel.js' %}"></script> {% endcomment %}
@@ -81,22 +85,32 @@
 
         {% comment %} Machine Learing Searching container {% endcomment %}
 
-        <form action="mac_learn_testing/" method="post">
+        <form action="recommendations/" method="post">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-5 mx-auto">
                     <div class="input-group">
-                        <input class="form-control border-end-0 border" name="search_box" placeholder="Recommend Movies..." type="text" value="{{ search_box }}" id="search_box">
+                        <input class="form-control border-end-0 border" name="search_box" autocomplete="on" placeholder="Recommend Movies..." type="text" value="{{ search_box }}" id="autoComplete" required="required">
                         <span class="input-group-append">
-                            <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                            {% comment %} <button class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5" type="submit">
                                 <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png"/>
-                            </button>
+                            </button> {% endcomment %}
                         </span>
                     </div>
                 </div>
             </div>
             </form>
         </div>
+
+        <div id="loader" class="text-center">
+        </div>
+        
+          <div class="results">
+          <center>
+            <h2 id="name" class="text-uppercase"></h2>
+          </center>
+          </div>
 
         {% comment %} {% for item in data %}
         <div class="movie_container-ml">
