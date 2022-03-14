@@ -1,4 +1,3 @@
-import json
 from django.shortcuts import render
 import requests
 import pandas as pd
@@ -80,11 +79,11 @@ def isMoviePresent(movie_name):
     
     # Sachin File Location
 
-    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
     # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
     
     # Harshal File Location
-    file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
     reader = csv.reader(file)
     for row in reader:
@@ -98,10 +97,10 @@ def getMovieDetail(movie_name):
     try:
 
         # sachin File Location
-        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
-        file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
@@ -138,11 +137,11 @@ def SearchMovie(request):
         return render(request, 'movie/index.html', {'message': 'Movie not found!'})
 
     # Reading data - set
-    # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
     # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', encoding='utf-8')
 
     # harshal file location
-    f = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    # f = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
 
     df = pd.read_csv(f)
 
@@ -192,8 +191,6 @@ def SearchMovie(request):
         movie_list.append([movie_name, poster])
         i = i + 1
         if i >= 10:
-<<<<<<< HEAD
-=======
             break
 
 # ------- trying to add geners in the same movie list array -- harshal --------------------------------
@@ -202,10 +199,10 @@ def SearchMovie(request):
         try:
 
         # sachin File Location
-        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+            file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
-            file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+            # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
@@ -245,7 +242,6 @@ def SearchMovie(request):
         movie_list.append([movie_name_geners, poster_geners])
         i = i + 1
         if i >= 100:
->>>>>>> 29fc1cddef1120ba2df47fa0cb48935701ecfa87
             break
         
 
