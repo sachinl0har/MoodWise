@@ -70,7 +70,11 @@ def trending_movies(request):
 
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
 def get_suggestions():
-    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+
+    # Harshal File Location
+    file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+
     data = pd.read_csv(file)
     return list(data['original_title'].str.capitalize())
 
@@ -79,11 +83,11 @@ def isMoviePresent(movie_name):
     
     # Sachin File Location
 
-    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
     # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
     
     # Harshal File Location
-    # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
     reader = csv.reader(file)
     for row in reader:
@@ -97,10 +101,10 @@ def getMovieDetail(movie_name):
     try:
 
         # sachin File Location
-        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
-        # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
@@ -137,11 +141,11 @@ def SearchMovie(request):
         return render(request, 'movie/index.html', {'message': 'Movie not found!'})
 
     # Reading data - set
-    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
     # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', encoding='utf-8')
 
     # harshal file location
-    # f = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    f = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
 
     df = pd.read_csv(f)
 
@@ -199,10 +203,10 @@ def SearchMovie(request):
         try:
 
         # sachin File Location
-            file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+            # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
-            # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+            file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
