@@ -6,10 +6,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Machine Learning Library
 
-import csv
-
 # Create your views here.
-
+FILE = 'https://raw.githubusercontent.com/sachinl0har/MoodWise/main/machine-learning/model/movie_dataset.csv'
 API_KEY = '05480c9212035931d585cd5d29ce6030'
 blank_poster_url = 'https://lh3.googleusercontent.com/proxy/wEDsSXD1LTIJ1mMLGbBKQMreCPZIiPEI0EtuBHJ2PklogRVLcAX99LIJvlt25b7-kfPXD5s46UVGa8kCWZnKSmYv2rM6q9Gr9c8YgqhOsjggwMlXW_UnMH0R-hkhqHNYztnS'
 
@@ -70,12 +68,12 @@ def trending_movies(request):
 
 #----------------------------------------- ALL ABOUT MACHINE LEARNING --------------------------------------------------------------------
 def get_suggestions():
-    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
     # Harshal File Location
     # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
-    data = pd.read_csv(file)
+    data = pd.read_csv(FILE)
     return list(data['original_title'].str.capitalize())
 
 
@@ -83,13 +81,13 @@ def isMoviePresent(movie_name):
     
     # Sachin File Location
 
-    file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+    # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
     # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
     
     # Harshal File Location
     # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
-    reader = csv.reader(file)
+    reader = pd.read_csv(FILE)
     for row in reader:
         if row[18] == movie_name:
             return True
@@ -101,14 +99,14 @@ def getMovieDetail(movie_name):
     try:
 
         # sachin File Location
-        file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+        # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
         # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
-        reader = csv.reader(file)
+        reader = pd.read_csv(FILE)
         movie_detail = []
         for row in reader:
             if row[18] == movie_name:
@@ -141,13 +139,13 @@ def SearchMovie(request):
         return render(request, 'movie/index.html', {'message': 'Movie not found!'})
 
     # Reading data - set
-    f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
+    # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
     # f = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', encoding='utf-8')
 
     # harshal file location
     # f = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', encoding='utf-8')
 
-    df = pd.read_csv(f)
+    df = pd.read_csv(FILE)
 
     # extracting useful features
     features = ['keywords', 'cast', 'genres', 'director', 'original_title', 'overview', 'title']
@@ -203,14 +201,14 @@ def SearchMovie(request):
         try:
 
         # sachin File Location
-            file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
+            # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
         
         # Harshal File Location
             # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
        
         
         # file = open('D:/Programming/Project/Django/MoodWise/MoodWise/machine-learning/model/main_data.csv', 'r', encoding='utf-8')
-            reader = csv.reader(file)
+            reader = pd.read_csv(FILE)
             movie_detail_geners = []
             for row in reader:
                 if row[3] == movie_name_geners:
