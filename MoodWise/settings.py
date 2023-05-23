@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5sknbt=)$gyi9*4u1@ct2_7*p0!rq1kq!#h80(c_m*%!e-c+!l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', 'moodwise.sachinlohar.com']
 
 
 # Application definition
@@ -125,10 +125,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+import os
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / 'static'
+# ]
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 django_heroku.settings(locals())
 
