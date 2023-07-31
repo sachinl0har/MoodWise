@@ -4,10 +4,13 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+import io
+
 # Machine Learning Library
 
 # Create your views here.
 FILE = 'https://raw.githubusercontent.com/sachinl0har/MoodWise/main/machine-learning/model/movie_dataset.csv'
+RESPONSE = requests.get(FILE)
 API_KEY = '05480c9212035931d585cd5d29ce6030'
 blank_poster_url = 'https://lh3.googleusercontent.com/proxy/wEDsSXD1LTIJ1mMLGbBKQMreCPZIiPEI0EtuBHJ2PklogRVLcAX99LIJvlt25b7-kfPXD5s46UVGa8kCWZnKSmYv2rM6q9Gr9c8YgqhOsjggwMlXW_UnMH0R-hkhqHNYztnS'
 
@@ -87,9 +90,9 @@ def isMoviePresent(movie_name):
     # Harshal File Location
     # file = open('D:/Django and Flask/Projects/Git Projects/MoodVice/MoodVice/MoodWise/machine-learning/model/movie_dataset.csv', 'r', encoding='utf-8')
 
-    reader = pd.read_csv(FILE)
-    for row in reader:
-        if row[18] == movie_name:
+    reader = pd.read_csv(io.StringIO(RESPONSE.text))
+    for row in list(reader['original_title']):
+        if row == movie_name:
             return True
     return False
 
