@@ -10,4 +10,7 @@ urlpatterns = [
     path('trending_movies/', views.trending_movies, name='trending_movies'),
     path("movie/<int:movie_id>/", views.MovieDetail, name="moviedetail"),   
     path("recommendations/", views.SearchMovie, name="recommendations"),
+
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
 ]

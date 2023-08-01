@@ -4,6 +4,10 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from .forms import RegistrationForm, LoginForm
+
 import io
 
 # Machine Learning Library
@@ -253,3 +257,33 @@ def SearchMovie(request):
 
 
     return render(request, 'movie/mac_learn_testing.html', {'data': movie_list})
+
+def register_view(request):
+    try:
+        if request.method == 'POST':
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('login')
+        else:
+            form = RegistrationForm()
+        return render(request, 'movie/register.html', {'form': form})
+    except:
+        return render(request, 'movie/register.html', {'form': form})
+    
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, email=email, password=password)
+            if user:
+                login(request, user)
+                return redirect('index')
+            else:
+                form.add_error(None, 'Invalid credentials. Please try again.')
+    else:
+        form = LoginForm()
+    return render(request, 'movie/login.html', {'form': form})

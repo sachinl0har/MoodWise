@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'music.apps.MusicConfig',
 ]
 
+AUTH_USER_MODEL = 'movie.CustomUser'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
