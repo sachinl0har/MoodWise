@@ -290,13 +290,13 @@ def registerPage(request):
     form = MyUserCreationForm()
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
-        #if form.is_valid():
-        user = form.save(commit=False)
-        user.username = user.username.lower()
-        user.save()
-        login(request, user)
-        return redirect('index')
-        #else:
-           # messages.error(request, 'Invalid Credentials')
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.error(request, 'Invalid Credentials')
     context = {'form':form}
     return render(request, 'movie/login_register.html', context)
