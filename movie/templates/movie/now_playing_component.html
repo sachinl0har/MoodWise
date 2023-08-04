@@ -1,7 +1,7 @@
 <div class="row pt-2 d-flex justify-content-center">
     <h1 class="pb-2">Now Playing</h1>
     {% for m in np_movies %}
-        <div class="card ms-2" style="width: 18rem">
+        <div class="card ms-2" style="width: 18%">
             <img src="https://image.tmdb.org/t/p/w200{{ m.poster_path }}"
                  class="card-img-top"
                  alt="..."/>
@@ -14,7 +14,7 @@
                 <p class="card-text">
                     <img src="https://img.icons8.com/emoji/20/000000/star-emoji.png"/> {{ m.vote_average }}
                 </p>
-                <a href="{% url 'moviedetail' m.id %}" class="btn btn-danger">View Details</a>
+                <a href="{% url 'moviedetail' m.id %}" class="btn btn--main">View Details</a>
             </div>
         </div>
     {% endfor %}
