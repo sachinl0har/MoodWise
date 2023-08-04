@@ -7,6 +7,14 @@
 
 <main class="auth layout">
 
+  {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
   {% if page == 'login' %}
   <div class="container">
     <div class="layout__box">
