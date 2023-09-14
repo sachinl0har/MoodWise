@@ -1,4 +1,4 @@
-# MoodVice
+# MoodWise
 
 ![image](https://user-images.githubusercontent.com/69034411/231839752-0bc68455-a650-4988-8cc7-e4961a64597a.png)
 
