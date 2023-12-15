@@ -17,7 +17,7 @@ from movie.models import User
 # Create your views here.
 FILE = 'https://raw.githubusercontent.com/sachinl0har/MoodWise/main/machine-learning/model/movie_dataset.csv'
 RESPONSE = requests.get(FILE)
-API_KEY = '05480c9212035931d585cd5d29ce6030'
+API_KEY = '641b0ff4328ab46dd81c5fed6bef269c'
 blank_poster_url = 'https://lh3.googleusercontent.com/proxy/wEDsSXD1LTIJ1mMLGbBKQMreCPZIiPEI0EtuBHJ2PklogRVLcAX99LIJvlt25b7-kfPXD5s46UVGa8kCWZnKSmYv2rM6q9Gr9c8YgqhOsjggwMlXW_UnMH0R-hkhqHNYztnS'
 
 def index(request):
